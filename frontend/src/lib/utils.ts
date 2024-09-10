@@ -1,7 +1,9 @@
+
+
 // import { clsx, type ClassValue } from 'clsx';
 // import { twMerge } from 'tailwind-merge';
 // import axios from 'axios';
-// import { AuthResponse, Task, TasksResponse } from './interfaces'; // Update path as needed
+// import { AuthResponse, Task, TasksResponse } from './interfaces'; // Update the path as needed
 
 // // Existing utility function
 // export function cn(...inputs: ClassValue[]) {
@@ -15,11 +17,11 @@
 // });
 
 // export const registerUser = async (data: { email: string; password: string }) => {
-//   return api.post<AuthResponse>('/auth/register', data); // Type the response
+//   return api.post<AuthResponse>('/auth/register', data);
 // };
 
 // export const loginUser = async (data: { email: string; password: string }) => {
-//   return api.post<AuthResponse>('/auth/login', data); // Type the response
+//   return api.post<AuthResponse>('/auth/login', data);
 // };
 
 // export const getTasks = async (token: string) => {
@@ -27,7 +29,7 @@
 //     headers: {
 //       Authorization: `Bearer ${token}`,
 //     },
-//   }); // Type the response
+//   });
 // };
 
 // export const createTask = async (task: { title: string; description: string }, token: string) => {
@@ -35,7 +37,7 @@
 //     headers: {
 //       Authorization: `Bearer ${token}`,
 //     },
-//   }); // Type the response
+//   });
 // };
 
 // export const updateTask = async (id: number, task: { title: string; description: string }, token: string) => {
@@ -43,29 +45,19 @@
 //     headers: {
 //       Authorization: `Bearer ${token}`,
 //     },
-//   }); // Type the response
+//   });
 // };
 
 // export const deleteTask = async (id: number, token: string) => {
 //   return api.delete(`/tasks/${id}`, {
-//       headers: {
-//           Authorization: `Bearer ${token}`,
-//       },
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
 //   });
 // };
 
-
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import axios from 'axios';
 import { AuthResponse, Task, TasksResponse } from './interfaces'; // Update the path as needed
-
-// Existing utility function
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-// API Utility Functions
 
 const api = axios.create({
   baseURL: 'http://localhost:5000/api', // Update with your backend URL
@@ -110,3 +102,8 @@ export const deleteTask = async (id: number, token: string) => {
     },
   });
 };
+
+// src/lib/utils.ts
+export function cn(...classes: (string | undefined | false)[]): string {
+  return classes.filter(Boolean).join(' ');
+}

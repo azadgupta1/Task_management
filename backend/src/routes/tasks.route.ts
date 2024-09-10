@@ -8,3 +8,5 @@ router.post('/', authenticateJWT, createTask); // Protect this route
 router.get('/', authenticateJWT, getTasks); // Protect this route
 
 export default router;
+
+

@@ -1,3 +1,5 @@
+// import { Request, Response, NextFunction } from 'express';
+// import jwt from 'jsonwebtoken';
 import jwt from 'jsonwebtoken';
 const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key';
 export const authenticateJWT = (req, res, next) => {
@@ -10,7 +12,7 @@ export const authenticateJWT = (req, res, next) => {
                 return res.sendStatus(403);
             }
             console.log('Verified User:', user); // Log the verified user details
-            req.user = user;
+            req.user = { id: user.userId }; // Attach user ID to request
             next();
         });
     }

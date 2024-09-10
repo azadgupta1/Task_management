@@ -1,6 +1,10 @@
+"use client";
+
+
 import React, { useState } from "react";
 import { createTask } from "@/lib/utils";
-import { Button, Input } from "@/components/ui";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 export default function CreateTask() {
