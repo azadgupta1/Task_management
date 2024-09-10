@@ -10,7 +10,7 @@ const fontSans = FontSans({
 
 
 export const metadata: Metadata = {
-  title: "Clashing App",
+  title: "SimplyDone",
   description: "Get your audience thoughts",
 };
 

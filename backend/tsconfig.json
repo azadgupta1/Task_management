@@ -1,13 +1,50 @@
+// {
+//     "compilerOptions": {
+//       "rootDirs": ["src"],
+//       "outDir": "dist",
+//       "lib": ["es2020"],
+//       "target": "es2020",
+//       "module": "Node16",
+//       "moduleResolution": "Node16",
+//       "esModuleInterop": true,
+//       "types": ["node"]
+//     },
+//     "include": ["src"]
+//   }
+
+// {
+//   "compilerOptions": {
+//     "outDir": "dist",
+//     "lib": ["es2020"],
+//     "target": "es2020",
+//     "module": "Node16",
+//     "moduleResolution": "Node16",
+//     "esModuleInterop": true,
+//     "baseUrl": "./src", // Base directory to resolve non-relative module names
+//     "types": ["node"]
+//   },
+//   "include": ["src/**/*.ts"], // Include all TypeScript files in src
+//   "exclude": ["node_modules", "dist"] // Exclude node_modules and dist folders
+// }
+
+
 {
-    "compilerOptions": {
-      "rootDirs": ["src"],
-      "outDir": "dist",
-      "lib": ["es2020"],
-      "target": "es2020",
-      "module": "Node16",
-      "moduleResolution": "Node16",
-      "esModuleInterop": true,
-      "types": ["node"]
-    },
-    "include": ["src"]
-  }
+  "compilerOptions": {
+    "outDir": "dist",
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "esModuleInterop": true,
+    "baseUrl": "./src", // Base directory to resolve non-relative module names
+    "types": ["node"],
+    "paths": {
+      "*": ["types/*"] // Ensure custom types are picked up
+    }
+  },
+  "include": [
+    "src/**/*.ts", // Include all TypeScript files in src
+    "src/types/**/*.d.ts" // Include custom type definitions
+  ],
+  "exclude": ["node_modules", "dist"] // Exclude node_modules and dist folders
+}
