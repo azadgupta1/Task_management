@@ -1,10 +1,8 @@
-// import { Request, Response } from 'express';
-// import prisma from '../config/database.js';
-import prisma from '../config/database.js'; // Ensure this path is correct
-// Create Task
+import prisma from '../config/database.js';
+// Create Tasks
 export const createTask = async (req, res) => {
     const { title, description } = req.body;
-    const userId = req.user?.id; // Use `id` from the user
+    const userId = req.user?.id; // Use id by the userr
     if (!userId) {
         return res.status(401).json({ error: 'User not authenticated' });
     }
@@ -25,7 +23,7 @@ export const createTask = async (req, res) => {
 };
 // Get Tasks
 export const getTasks = async (req, res) => {
-    const userId = req.user?.id; // Use `id` from the user
+    const userId = req.user?.id; // Using the id here
     if (!userId) {
         return res.status(401).json({ error: 'User not authenticated' });
     }
@@ -35,7 +33,7 @@ export const getTasks = async (req, res) => {
                 userId: userId,
             },
         });
-        res.json(tasks); // Ensure this returns an array of tasks
+        res.json(tasks);
     }
     catch (error) {
         console.error("Error fetching tasks:", error);
