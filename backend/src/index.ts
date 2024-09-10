@@ -1,5 +1,5 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
-import cors from 'cors'; // Import the cors package
+import cors from 'cors'; 
 import "dotenv/config";
 import authRoutes from './routes/auth.route.js';
 import taskRoutes from './routes/tasks.route.js';
@@ -10,20 +10,20 @@ const PORT = process.env.PORT || 7000;
 
 // Configure CORS
 app.use(cors({
-    origin: 'http://localhost:3000', // Replace with the URL of your frontend if it's different
+    origin: 'http://localhost:3000', 
     methods: 'GET,POST,PUT,DELETE',
     credentials: true
 }));
 
 app.use(express.json()); // Parse JSON bodies
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true })); 
 
-// Use your routes
+// Usint the  routes here..
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/protected', protectedRoutes);
 
-// Global error handling middleware
+// handling middleware
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');

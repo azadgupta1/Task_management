@@ -1,38 +1,11 @@
-// import { Request, Response } from 'express';
-// import prisma from '../config/database.js';
-
-// // Create Task
-// export const createTask = async (req: Request, res: Response) => {
-//   const { title, description, userId } = req.body;
-//   try {
-//     const task = await prisma.task.create({
-//       data: { title, description, userId },
-//     });
-//     res.status(201).json(task);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to create task' });
-//   }
-// };
-
-// // Get Tasks
-// export const getTasks = async (req: Request, res: Response) => {
-//   try {
-//     const tasks = await prisma.task.findMany();
-//     res.json(tasks);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to get tasks' });
-//   }
-// };
-
-// 
 
 import { Request, Response } from 'express';
-import prisma from '../config/database.js'; // Ensure this path is correct
+import prisma from '../config/database.js';
 
-// Create Task
+// Create Tasks
 export const createTask = async (req: Request, res: Response) => {
     const { title, description } = req.body;
-    const userId = req.user?.id; // Use `id` from the user
+    const userId = req.user?.id; // Use id by the userr
 
     if (!userId) {
         return res.status(401).json({ error: 'User not authenticated' });
@@ -55,7 +28,7 @@ export const createTask = async (req: Request, res: Response) => {
 
 // Get Tasks
 export const getTasks = async (req: Request, res: Response) => {
-    const userId = req.user?.id; // Use `id` from the user
+    const userId = req.user?.id; // Using the id here
 
     if (!userId) {
         return res.status(401).json({ error: 'User not authenticated' });
@@ -67,7 +40,7 @@ export const getTasks = async (req: Request, res: Response) => {
                 userId: userId,
             },
         });
-        res.json(tasks); // Ensure this returns an array of tasks
+        res.json(tasks); 
     } catch (error) {
         console.error("Error fetching tasks:", error);
         res.status(500).json({ error: 'Failed to get tasks' });
