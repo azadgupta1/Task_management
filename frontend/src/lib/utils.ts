@@ -52,7 +52,7 @@ export const deleteTask = async (id: number, token: string) => {
   });
 };
 
-// Utility function 
+// utility function 
 export function cn(...classes: (string | undefined | false)[]): string {
   return classes.filter(Boolean).join(' ');
 }
