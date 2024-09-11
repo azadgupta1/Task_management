@@ -23,7 +23,7 @@ export default function TaskList() {
             try {
                 const response = await getTasks(token);
                 console.log("Tasks response data: ", response.data);
-                setTasks(response.data); // Set state with the correct data
+                setTasks(response.data); // Set state 
             } catch (error) {
                 setError("Failed to fetch tasks.");
                 console.error("Error fetching tasks:", error);
